@@ -1,1 +1,1 @@
-Repository created to traing js code organization and train manipulating dom without jQuery
+Repository created to train js code organization and train manipulating dom without jQuery.
