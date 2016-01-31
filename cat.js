@@ -55,8 +55,7 @@
             clicks_number: document.getElementById("clicks_number"),
             cats_list: document.getElementById("cats_list"),
             renderCatsList: function(cats) {
-                var html = "",
-                    i,
+                var i,
                     length = cats.length,
                     element;
                 for (i = 0; i < length; i += 1) {
@@ -73,11 +72,16 @@
                 }
             },
             renderCat: function(name, click_count, image_path) {
-                var element = document.createElement("img");
+                var element = document.createElement("img"),
+                    div_to_clear;
                 element.src = image_path;
                 document.getElementById("cat_name").innerHTML = name;
                 document.getElementById("clicks_number").innerHTML = click_count;
-                document.getElementById("picture").appendChild(element);
+                div_to_clear = document.getElementById("picture");
+                if (div_to_clear.firstChild) {
+                    div_to_clear.removeChild(div_to_clear.firstChild);
+                }
+                div_to_clear.appendChild(element);
             },
             clickListener: function(a) {
                 var cat_id = a.target.id;
