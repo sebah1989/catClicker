@@ -57,11 +57,14 @@
             renderCatsList: function(cats) {
                 var html = "",
                     i,
-                    length = cats.length;
+                    length = cats.length,
+                    element;
                 for (i = 0; i < length; i += 1) {
-                    html += "<li id='" + cats[i] + "'>" + cats[i] + "</li>";
+                    element = document.createElement("li");
+                    element.id = cats[i];
+                    element.textContent = cats[i];
+                    this.cats_list.appendChild(element);
                 }
-                this.cats_list.innerHTML = html;
             },
             addEventsToCatsList: function(cats) {
                 var i, length = cats.length;
@@ -70,9 +73,11 @@
                 }
             },
             renderCat: function(name, click_count, image_path) {
+                var element = document.createElement("img");
+                element.src = image_path;
                 document.getElementById("cat_name").innerHTML = name;
                 document.getElementById("clicks_number").innerHTML = click_count;
-                document.getElementById("picture").innerHTML = "<img src='" + image_path + "'>";
+                document.getElementById("picture").appendChild(element);
             },
             clickListener: function(a) {
                 var cat_id = a.target.id;
